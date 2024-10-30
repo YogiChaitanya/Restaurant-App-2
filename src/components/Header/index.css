@@ -1,0 +1,70 @@
+.header-container {
+  height: 10vh;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo-heading {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 35px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.orders-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 576px) {
+  .logo-heading {
+    font-size: 25px;
+  }
+}
+
+.my-order-texts {
+  color: #585555;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 20px;
+}
+
+.cart-icon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: yellow;
+  height: 30px;
+  width: 30px;
+
+  border-radius: 15px;
+
+  margin-left: 10px;
+}
+
+.cart-count-badge {
+  color: red;
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 20px;
+
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .my-order-text {
+    display: none;
+  }
+}

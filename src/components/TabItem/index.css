@@ -1,0 +1,41 @@
+.each-tab-item {
+  padding: 15px;
+
+  text-align: center;
+}
+
+.active-tab-item {
+  color: red;
+  font-weight: 600;
+
+  border-bottom: 3px solid red;
+}
+
+.tab-category-button {
+  color: inherit;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  padding: 0;
+
+  background-color: transparent;
+
+  border: none;
+  cursor: pointer;
+
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media (max-width: 576px) {
+  .each-tab-item {
+    padding: 5px;
+  }
+
+  .tab-category-button {
+    font-size: 14px;
+    min-width: 100px;
+  }
+}

@@ -1,0 +1,223 @@
+.dish-item-container {
+  padding: 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  border: 1px solid gainsboro;
+  border-radius: 12px;
+
+  margin-bottom: 30px;
+}
+
+.border {
+  align-self: flex-start;
+
+  margin-right: 10px;
+}
+
+.veg-border {
+  border: 1px solid green;
+}
+
+.non-veg-border {
+  border: 1px solid red;
+}
+
+.round {
+  height: 25px;
+  width: 25px;
+
+  border-radius: 25px;
+
+  margin: 5px;
+}
+
+.veg-round {
+  background-color: green;
+}
+
+.non-veg-round {
+  background-color: red;
+}
+
+.dish-currency-price-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.dish-details-container {
+  flex-grow: 1;
+}
+
+.dish-name {
+  font-weight: 600;
+  font-family: 'Roboto';
+  font-size: 25px;
+
+  margin-top: 0;
+}
+
+.dish-currency-price {
+  color: #525252;
+  font-weight: 600;
+  font-family: 'Roboto';
+  font-size: 16px;
+
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 5px;
+}
+
+.dish-description {
+  color: #bfc3c7;
+  font-weight: 500;
+  font-family: 'Roboto';
+  font-size: 16px;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.controller-container {
+  height: 50px;
+  width: fit-content;
+  min-width: 100px;
+  padding: 5px;
+  background-color: pink;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 50px;
+}
+
+.p-m-button {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.quantity {
+  color: white;
+  font-size: 18px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.not-availability-text {
+  color: red;
+  font-weight: 500;
+  font-size: 18px;
+
+  margin: 5px;
+}
+
+.addon-availability-text {
+  color: #734ff4;
+  font-weight: 500;
+  font-size: 18px;
+
+  margin: 5px;
+}
+
+.dish-calories {
+  color: orange;
+  font-weight: bold;
+  font-family: 'Roboto';
+  font-size: 18px;
+
+  align-self: center;
+}
+
+.dish-image {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 12px;
+
+  margin-left: 30px;
+}
+
+.customization-text {
+  color: blue;
+  font-family: roboto;
+  font-size: 18px;
+  font-weight: normal;
+}
+@media (max-width: 576px) {
+  .quantity {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .border {
+    margin: 0px;
+  }
+
+  .dish-details-container {
+    padding-left: 5px;
+    padding-right: 5px;
+    flex-grow: 0;
+  }
+  .dish-calories {
+    width: 10%;
+  }
+  .round {
+    height: 15px;
+    width: 15px;
+
+    border-radius: 15px;
+
+    margin: 5px;
+  }
+  .dish-item-container {
+    padding: 9px;
+  }
+  .dish-image {
+    width: 70px;
+    height: 70px;
+
+    margin-left: 0;
+  }
+
+  .dish-calories {
+    font-size: 12px;
+  }
+
+  .dish-name {
+    font-size: 14px;
+  }
+
+  .dish-currency-price {
+    font-size: 11px;
+  }
+
+  .dish-description {
+    font-size: 11px;
+  }
+
+  .not-availability-text {
+    font-size: 11px;
+  }
+
+  .customization-text {
+    font-size: 12px;
+  }
+
+  .controller-container {
+    height: 30px;
+    min-width: 85px;
+    border-radius: 30px;
+  }
+}
