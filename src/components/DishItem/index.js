@@ -1,87 +1,108 @@
+import {Component} from 'react'
 import './index.css'
 
-const DishItem = props => {
-  const {dishDetails, cartList, incrementQuantity, decrementQuantity} = props
+class DishItem extends Component {
+  state = {quantity: 0}
 
-  const {
-    dishId,
-    dishName,
-    dishType,
-    dishPrice,
-    dishCurrency,
-    dishDescription,
-    dishImage,
-    dishCalories,
-    addonCat,
-    dishAvailability,
-  } = dishDetails
-
-  const onIncreaseQuantity = () => {
-    incrementQuantity(dishId)
-  }
-  const onDecreaseQuantity = () => {
-    decrementQuantity(dishId)
+  onIncreaseQuantity = () => {
+    this.setState(prevState => ({
+      quantity: prevState.quantity + 1,
+    }))
   }
 
-  const getQuantity = () => {
-    const cartItemQuantity = cartList.find(item => item.dishId === dishId)
-    return cartItemQuantity ? cartList.quantity : 0
+  onDecreaseQuantity = () => {
+    const {quantity} = this.state
+    if (quantity >= 1) {
+      this.setState(prevState => ({
+        quantity: prevState.quantity - 1,
+      }))
+    }
   }
 
-  const renderControllerButton = () => (
-    <div className="controller-container">
-      <button onClick={onDecreaseQuantity} className="p-m-button" type="button">
-        -
-      </button>
+  renderControllerButton = () => {
+    const {quantity} = this.state
 
-      <p className="quantity">{getQuantity()}</p>
-      <button onClick={onIncreaseQuantity} className="p-m-button" type="button">
-        +
-      </button>
-    </div>
-  )
+    return (
+      <div className="controller-container">
+        <button
+          onClick={this.onDecreaseQuantity}
+          className="p-m-button"
+          type="button"
+        >
+          -
+        </button>
 
-  return (
-    <li className="dish-item-container">
-      <div
-        className={`border ${
-          dishType === 1 ? 'non-veg-border' : 'veg-border'
-        } `}
-      >
-        <div
-          className={`round ${dishType === 1 ? 'non-veg-round' : 'veg-round'} `}
-        />
+        <p className="quantity">{quantity}</p>
+        <button
+          onClick={this.onIncreaseQuantity}
+          className="p-m-button"
+          type="button"
+        >
+          +
+        </button>
       </div>
+    )
+  }
 
-      <div className="dish-details-container">
-        <h1 className="dish-name">{dishName}</h1>
+  render() {
+    const {dishDetails} = this.props
 
-        <div className="dish-currency-price-container">
-          <p className="dish-currency-price">{dishCurrency}</p>
-          <p className="dish-currency-price">{dishPrice}</p>
+    const {
+      dishName,
+      dishType,
+      dishPrice,
+      dishCurrency,
+      dishDescription,
+      dishImage,
+      dishCalories,
+      addonCat,
+      dishAvailability,
+    } = dishDetails
+
+    return (
+      <li className="dish-item-container">
+        <div
+          className={`border ${
+            dishType === 1 ? 'non-veg-border' : 'veg-border'
+          } `}
+        >
+          <div
+            className={`round ${
+              dishType === 1 ? 'non-veg-round' : 'veg-round'
+            } `}
+          />
         </div>
 
-        <p className="dish-description">{dishDescription}</p>
+        <div className="dish-details-container">
+          <h1 className="dish-name">{dishName}</h1>
 
-        {dishAvailability ? (
-          renderControllerButton()
-        ) : (
-          <p className="not-availability-text">Not available</p>
-        )}
+          <div className="dish-currency-price-container">
+            <p className="dish-currency-price">{dishCurrency}</p>
+            <p className="dish-currency-price">{dishPrice}</p>
+          </div>
 
-        {addonCat.length !== 0 && (
-          <p className="customization-text" key={addonCat}>
-            Customizations available
-          </p>
-        )}
-      </div>
+          <p className="dish-description">{dishDescription}</p>
 
-      <p className="dish-calories"> {dishCalories} calories</p>
-      <div>
-        <img src={dishImage} className="dish-image" alt={dishName} />
-      </div>
-    </li>
-  )
+          {dishAvailability ? (
+            this.renderControllerButton()
+          ) : (
+            <p className="not-availability-text">Not available</p>
+          )}
+
+          {addonCat.length !== 0 && (
+            <p className="customization-text" key={addonCat}>
+              Customizations available
+            </p>
+          )}
+        </div>
+
+        <p className="dish-calories"> {dishCalories} calories</p>
+        <div>
+          <img src={dishImage} className="dish-image" alt={dishName} />
+        </div>
+      </li>
+    )
+  }
 }
 
 export default DishItem

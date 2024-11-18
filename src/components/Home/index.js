@@ -9,29 +9,10 @@ class Home extends Component {
     isLoading: true,
     response: [],
     activeCategoryId: '',
-    cartList: [],
-    quantity: 0,
   }
 
   componentDidMount() {
     this.fetchRestaurantApi()
-  }
-
-  // this method  i have to implement in  foodItemQuantity
-  incrementQuantity = () => {
-    this.setState(prevState => ({
-      quantity: prevState.quantity + 1,
-    }))
-  }
-
-  decrementQuantity = () => {
-    const {quantity} = this.state
-
-    if (quantity > 0) {
-      this.setState(prevState => ({
-        quantity: prevState.quantity - 1,
-      }))
-    }
   }
 
   getUpdatedData = tableMenuList =>
@@ -71,9 +52,7 @@ class Home extends Component {
 
   renderDishes = () => {
     const {response, activeCategoryId} = this.state
-    const {cartList} = this.state
-    console.log(cartList)
-    // Q1 if cartList is empty means how you will add items
+
     const {categoryDishes} = response.find(
       eachCategory => eachCategory.menuCategoryId === activeCategoryId,
     )
@@ -81,13 +60,7 @@ class Home extends Component {
     return (
       <ul className="dishes-list-container">
         {categoryDishes.map(eachDish => (
-          <DishItem
-            key={eachDish.dishId}
-            dishDetails={eachDish}
-            cartList={cartList}
-            incrementQuantity={this.incrementQuantity}
-            decrementQuantity={this.decrementQuantity}
-          />
+          <DishItem key={eachDish.dishId} dishDetails={eachDish} />
         ))}
       </ul>
     )
@@ -106,27 +79,28 @@ class Home extends Component {
   )
 
   render() {
-    const {isLoading, cartList, response, activeCategoryId} = this.state
+    const {isLoading, response, activeCategoryId} = this.state
 
     return isLoading ? (
       this.renderSpinner()
     ) : (
-      <div className="home-background">
-        <Header cartList={cartList} />
+      <>
+        <Header />
+        <div className="home-container">
+          <ul className="tab-container">
+            {response.map(eachCategory => (
+              <TabItem
+                key={eachCategory.menuCategoryId}
+                tabDetails={eachCategory}
+                clickedTab={this.updatedData}
+                isActive={activeCategoryId === eachCategory.menuCategoryId}
+              />
+            ))}
+          </ul>
 
-        <ul className="tab-container">
-          {response.map(eachCategory => (
-            <TabItem
-              key={eachCategory.menuCategoryId}
-              tabDetails={eachCategory}
-              clickedTab={this.updatedData}
-              isActive={activeCategoryId === eachCategory.menuCategoryId}
-            />
-          ))}
-        </ul>
-
-        {this.renderDishes()}
-      </div>
+          {this.renderDishes()}
+        </div>
+      </>
     )
   }
 }

@@ -1,13 +1,21 @@
+import CartContext from '../../context/CartContext'
+
 import './index.css'
 
-const Header = props => {
-  const {cartList} = props
-  const count = cartList.length
-
+const Header = () => {
   const renderCartIcon = () => (
-    <div className="cart-icon-container">
-      <p className="cart-count-badge">{count}</p>
-    </div>
+    <CartContext.Consumer>
+      {value => {
+        const {cartList} = value
+        const cartCount = cartList.length
+
+        return (
+          <div className="cart-icon-container">
+            <p className="cart-count-badge">{cartCount}</p>
+          </div>
+        )
+      }}
+    </CartContext.Consumer>
   )
 
   return (
